@@ -55,8 +55,7 @@ osmtogeojson = function( data, options, featureCallback ) {
   );
 
   var result;
-  if ( ((typeof XMLDocument !== "undefined") && data instanceof XMLDocument ||
-        (typeof XMLDocument === "undefined") && data.childNodes) )
+  if ((data instanceof XMLDocument || data instanceof Document) && data.childNodes)
     result = _osmXML2geoJSON(data);
   else
     result = _overpassJSON2geoJSON(data);
